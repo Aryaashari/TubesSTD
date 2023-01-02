@@ -12,54 +12,6 @@ int main()
 
     createHospital(H);
 
-//    r.capacity = 2;
-//    r.emptyBed = 2;
-//    r.id = "A01";
-//    r.roomType = "VIP";
-//    ar = newElmRoom(r);
-//    insertRoom(H, ar);
-//
-//    p.age = 21;
-//    p.disease = "HIV";
-//    p.gender = 'L';
-//    p.id = "V01";
-//    p.name = "Arya Wiguna";
-//    ap = newElmPatient(p);
-//    insertPatient(H, ap, "VIP");
-//
-//    -------------------------beda kelas------------
-//
-//    r.capacity = 3;
-//    r.emptyBed = 3;
-//    r.id = "A02";
-//    r.roomType = "Reguler";
-//    ar = newElmRoom(r);
-//    insertRoom(H, ar);
-//
-//    p.age = 12;
-//    p.disease = "Chlamydia";
-//    p.gender = 'P';
-//    p.id = "C69";
-//    p.name = "Audy Nadia";
-//    ap = newElmPatient(p);
-//    insertPatient(H, ap, "Reguler");
-//
-//    p.age = 23;
-//    p.disease = "Gonorrhea";
-//    p.gender = 'L';
-//    p.id = "G12";
-//    p.name = "Sultan Lord";
-//    insertPatient(H, newElmPatient(p), "Reguler");
-//
-//    p.age = 44;
-//    p.disease = "Herpes";
-//    p.gender = 'L';
-//    p.id = "H45";
-//    p.name = "King Ipul";
-//    insertPatient(H, newElmPatient(p), "Reguler");
-//
-//    showAll(H);
-
     while (menu != 0){
         cout<<"\n==============Menu=============="<<endl;
         cout<<"1. Insert new patient"<<endl;
@@ -108,13 +60,4 @@ int main()
     }
 
     return 0;
-
-//    cout<<"Delete patient from the list? (input 0 if no)"<<endl;
-//    cout<<"Patient ID: ";cin>>id;
-//    if (id == "0"){
-//        cout<<"They're ALL alive?..cool"<<endl;
-//    }
-//    deletePatient(H, id);
-//    cout<<"Patient deleted from the list"<<endl<<endl;
-//    showAll(H);
 }

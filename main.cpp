@@ -7,58 +7,10 @@ int main()
     infoRoom r;
     adrRoom ar;
     adrPatient ap;
-    string id,roomtype;
+    string id,roomtype, roomId;
     int menu = 1;
 
     createHospital(H);
-
-//    r.capacity = 2;
-//    r.emptyBed = 2;
-//    r.id = "A01";
-//    r.roomType = "VIP";
-//    ar = newElmRoom(r);
-//    insertRoom(H, ar);
-//
-//    p.age = 21;
-//    p.disease = "HIV";
-//    p.gender = 'L';
-//    p.id = "V01";
-//    p.name = "Arya Wiguna";
-//    ap = newElmPatient(p);
-//    insertPatient(H, ap, "VIP");
-//
-//    -------------------------beda kelas------------
-//
-//    r.capacity = 3;
-//    r.emptyBed = 3;
-//    r.id = "A02";
-//    r.roomType = "Reguler";
-//    ar = newElmRoom(r);
-//    insertRoom(H, ar);
-//
-//    p.age = 12;
-//    p.disease = "Chlamydia";
-//    p.gender = 'P';
-//    p.id = "C69";
-//    p.name = "Audy Nadia";
-//    ap = newElmPatient(p);
-//    insertPatient(H, ap, "Reguler");
-//
-//    p.age = 23;
-//    p.disease = "Gonorrhea";
-//    p.gender = 'L';
-//    p.id = "G12";
-//    p.name = "Sultan Lord";
-//    insertPatient(H, newElmPatient(p), "Reguler");
-//
-//    p.age = 44;
-//    p.disease = "Herpes";
-//    p.gender = 'L';
-//    p.id = "H45";
-//    p.name = "King Ipul";
-//    insertPatient(H, newElmPatient(p), "Reguler");
-//
-//    showAll(H);
 
     while (menu != 0){
         cout<<"\n==============Menu=============="<<endl;
@@ -66,6 +18,8 @@ int main()
         cout<<"2. Create new room"<<endl;
         cout<<"3. Delete Patient from the list"<<endl;
         cout<<"4. Show patient list"<<endl;
+        cout<<"5. Show detail patient"<<endl;
+        cout<<"6. Show detail room"<<endl;
         cout<<"0. Exit"<<endl;
         cout<<"Choose menu: ";cin>>menu;
         cout<<endl;
@@ -104,17 +58,20 @@ int main()
         case 4:
             showAll(H);
             break;
+        case 5:
+            cout<<"Detail pasien: "<<endl;
+            cout<<"Patient ID: ";cin>>id;
+            showDetailPatient(H, id);
+            break;
+        case 6:
+            cout<<"Detail room: "<<endl;
+            cout<<"Room ID: ";cin>>roomId;
+            showDetailRoom(H, roomId);
+            break;
+        default:
+            cout << "Inputan tidak valid" << endl;
         }
     }
 
     return 0;
-
-//    cout<<"Delete patient from the list? (input 0 if no)"<<endl;
-//    cout<<"Patient ID: ";cin>>id;
-//    if (id == "0"){
-//        cout<<"They're ALL alive?..cool"<<endl;
-//    }
-//    deletePatient(H, id);
-//    cout<<"Patient deleted from the list"<<endl<<endl;
-//    showAll(H);
 }

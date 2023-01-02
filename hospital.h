@@ -50,6 +50,8 @@ void insertRoom(Hospital &H, adrRoom r);
 void insertPatient(Hospital &H, adrPatient p, string roomId);
 adrPatient deletePatient(Hospital &H, string patientId);
 void showAll(Hospital &H);
+void showDetailPatient(Hospital H, string patientId);
+void showDetailRoom(Hospital H, string roomId);
 
 
 #endif // HOSPITAL_H_INCLUDED

@@ -22,6 +22,17 @@ adrPatient newElmPatient(infoPatient info) {
     return p;
 }
 
+adrRoom searchRoom(Hospital H, string roomId) {
+    adrRoom r = H.first;
+    while (r != NULL) {
+        if (r->info.id == roomId) {
+            return r;
+        }
+        r = r->next;
+    }
+    return NULL;
+}
+
 adrRoom searchRoomByType(Hospital H, string type) {
     adrRoom r = H.first;
     while (r != NULL) {
@@ -103,7 +114,7 @@ adrPatient deletePatient(Hospital &H, string id) {
     adrRoom r = searchRoomByPatientId(H,id);
 
     if (p == NULL) {
-        cout << "Pasien dengan id '" << id << "' tidak ditemukan!" << endl;
+        cout << "Pasien dengan id '" << id << "' tidak ditemukan" << endl;
         return NULL;
     } else {
         adrPatient q = r->patient;
@@ -127,15 +138,54 @@ void showAll(Hospital &H){
     int i = 1;
     adrRoom r = H.first;
 
-    while (r != NULL){
+    if (r == NULL) {
+        cout << "Belum ada kamar yang tersedia" << endl;
+        cout << endl;
+    } else {
+        while (r != NULL){
         cout<< "========== Room "<<r->info.id<<" "<<r->info.roomType<<" =========="<<endl;
         adrPatient p = r->patient;
-        while (p != NULL){
-            cout<<setw(5)<<i<<setw(10)<<p->info.id<<setw(15)<<p->info.name<<setw(5)<<p->info.age
-            <<setw(5)<<p->info.gender<<setw(15)<<p->info.disease<<endl;
-            p = p->next;
-            i++;
+            if (p == NULL) {
+                cout << "Belum ada pasien di kamar ini" << endl;
+                cout << endl;
+            } else {
+                while (p != NULL){
+                    cout<<setw(5)<<i<<setw(10)<<p->info.id<<setw(15)<<p->info.name<<setw(5)<<p->info.age
+                    <<setw(5)<<p->info.gender<<setw(15)<<p->info.disease<<endl;
+                    p = p->next;
+                    i++;
+                }
+            }
+
+            r = r->next;
+
         }
-        r = r->next;
+    }
+}
+
+
+void showDetailPatient(Hospital H, string patientId) {
+    adrPatient p = searchPatient(H, patientId);
+    if (p == NULL) {
+        cout << "Patien dengan id '" << patientId << "' tidak ditemukan" << endl;
+    } else {
+        cout << "Name: " << p->info.name << endl;
+        cout << "Age: " << p->info.age << endl;
+        cout << "Gender: " << p->info.gender << endl;
+        cout << "Disease: " << p->info.disease << endl;
+        cout << endl;
+    }
+}
+
+void showDetailRoom(Hospital H, string roomId) {
+    adrRoom r = searchRoom(H, roomId);
+
+    if (r == NULL) {
+        cout << "Room dengan id '" << roomId << "' tidak ditemukan" << endl;
+    } else {
+        cout << "Capacity: " << r->info.capacity << endl;
+        cout << "Empty Bed: " << r->info.emptyBed << endl;
+        cout << "Room Type: " << r->info.roomType << endl;
+        cout << endl;
     }
 }

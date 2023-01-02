@@ -143,22 +143,19 @@ void showAll(Hospital &H){
         cout << endl;
     } else {
         while (r != NULL){
-        cout<< "========== Room "<<r->info.id<<" "<<r->info.roomType<<" =========="<<endl;
-        adrPatient p = r->patient;
-            if (p == NULL) {
-                cout << "Belum ada pasien di kamar ini" << endl;
-                cout << endl;
-            } else {
-                while (p != NULL){
-                    cout<<setw(5)<<i<<setw(10)<<p->info.id<<setw(15)<<p->info.name<<setw(5)<<p->info.age
-                    <<setw(5)<<p->info.gender<<setw(15)<<p->info.disease<<endl;
-                    p = p->next;
-                    i++;
-                }
+            adrPatient p = r->patient;
+            cout<< "==================== Room "<<r->info.id<<" "<<r->info.roomType<<" ===================="<<endl;
+            cout<<setw(5)<<"No"<<setw(5)<<"ID"<<setw(15)<<"Name"<<setw(5)<<"Age"
+            <<setw(7)<<"Gender"<<setw(17)<<"Disease"<<endl;
+            while (p != NULL){
+                cout<<setw(5)<<i<<setw(5)<<p->info.id<<setw(15)<<p->info.name<<setw(5)<<p->info.age
+                <<setw(7)<<p->info.gender<<setw(17)<<p->info.disease<<endl;
+                p = p->next;
+                i++;
             }
-
+            cout<<endl;
+            i = 1;
             r = r->next;
-
         }
     }
 }

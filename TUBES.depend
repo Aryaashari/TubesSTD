@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1672642555 source:d:\kuliah\semester 3\struktur data\tugas\tubes\main.cpp
+1672826867 source:d:\kuliah\semester 3\struktur data\tugas\tubes\main.cpp
 	"hospital.h"
 
-1672644473 source:d:\kuliah\semester 3\struktur data\tugas\tubes\hospital.cpp
+1672826622 source:d:\kuliah\semester 3\struktur data\tugas\tubes\hospital.cpp
 	"hospital.h"
 
-1672641790 d:\kuliah\semester 3\struktur data\tugas\tubes\hospital.h
+1672825761 d:\kuliah\semester 3\struktur data\tugas\tubes\hospital.h
 	<iostream>
 	<iomanip>
 

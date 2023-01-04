@@ -48,10 +48,12 @@ adrPatient searchPatient(Hospital H, string patientId);
 adrRoom searchRoomByPatientId(Hospital H, string patientId);
 void insertRoom(Hospital &H, adrRoom r);
 void insertPatient(Hospital &H, adrPatient p, string roomId);
+void insertPatientByRoom(Hospital &H, adrPatient p, adrRoom r);
 adrPatient deletePatient(Hospital &H, string patientId);
 void showAll(Hospital &H);
 void showDetailPatient(Hospital H, string patientId);
 void showDetailRoom(Hospital H, string roomId);
-
+void moveRoom(Hospital &H, string roomId, string patientId);
+void deleteRoom(Hospital &H, string roomId);
 
 #endif // HOSPITAL_H_INCLUDED

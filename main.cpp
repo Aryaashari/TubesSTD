@@ -20,6 +20,8 @@ int main()
         cout<<"4. Show patient list"<<endl;
         cout<<"5. Show detail patient"<<endl;
         cout<<"6. Show detail room"<<endl;
+        cout<<"7. Move room"<<endl;
+        cout<<"8. Delete room"<<endl;
         cout<<"0. Exit"<<endl;
         cout<<"Choose menu: ";cin>>menu;
         cout<<endl;
@@ -67,6 +69,21 @@ int main()
             cout<<"Detail room: "<<endl;
             cout<<"Room ID: ";cin>>roomId;
             showDetailRoom(H, roomId);
+            break;
+        case 7:
+            cout << "Move room:" << endl;
+            cout<<"Patient ID: ";cin>>id;
+            cout<<"Room ID: ";cin>>roomId;
+            moveRoom(H,roomId,id);
+            break;
+        case 8:
+            if (H.first == NULL) {
+                cout << "Kamar belum tersedia" << endl;
+            } else {
+                cout << "Delete room:" << endl;
+                cout << "Room ID: ";cin>>roomId;
+                deleteRoom(H,roomId);
+            }
             break;
         default:
             cout << "Inputan tidak valid" << endl;

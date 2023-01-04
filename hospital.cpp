@@ -126,7 +126,7 @@ adrPatient deletePatient(Hospital &H, string id) {
         } else {
             r->patient = p->next;
         }
-
+        r->info.emptyBed++;
         p->next = NULL;
     }
 
@@ -184,5 +184,67 @@ void showDetailRoom(Hospital H, string roomId) {
         cout << "Empty Bed: " << r->info.emptyBed << endl;
         cout << "Room Type: " << r->info.roomType << endl;
         cout << endl;
+    }
+}
+
+void insertPatientByRoom(Hospital &H, adrPatient p, adrRoom r) {
+
+    adrPatient q = r->patient;
+    if (r->info.emptyBed == 0) {
+        cout << "Kamar yang dituju telah penuh" << endl;
+    } else {
+        if (q == NULL) {
+            r->patient = p;
+        } else {
+            while (q->next != NULL) {
+                q = q->next;
+            }
+            q->next = p;
+        }
+
+        r->info.emptyBed--;
+    }
+
+}
+
+
+void moveRoom(Hospital &H, string roomId, string patientId) {
+    adrRoom r = searchRoom(H,roomId);
+    adrPatient p = searchPatient(H, patientId);
+    adrRoom rp = searchRoomByPatientId(H,patientId);
+    if (r == NULL) {
+        cout << "Kamar dengan ID '" << r->info.id << "' tidak ditemukan" << endl;
+    } else if (p == NULL) {
+        cout << "Pasien dengan ID '" << p->info.id << "' tidak ditemukan" << endl;
+    } else if (roomId == rp->info.id) {
+        cout << "ID kamar asal dan tujuan tidak boleh sama" << endl;
+    } else {
+        insertPatientByRoom(H,p,r);
+        deletePatient(H,patientId);
+        cout << "Berhasil memindahkan pasien" << endl;
+    }
+}
+
+void deleteRoom(Hospital &H, string roomId) {
+    adrRoom r = searchRoom(H,roomId);
+
+    if (r == NULL) {
+        cout << "Kamar dengan ID '" << r->info.id << "' tidak ditemukan" << endl;
+    } else if (r->info.emptyBed != r->info.capacity) {
+        cout << "Kamar dengan ID '" << r->info.id << "' masih memiliki pasien, silahkan pindahkan terlebih dahulu" << endl;
+    } else {
+        if (H.first == H.last) {
+            H.first = NULL;
+            H.last = NULL;
+        } else if (H.first == r) {
+            r->next->prev == NULL;
+            H.first = r->next;
+        } else if (H.last == r) {
+            r->prev->next = r->next;
+            H.last = r->prev;
+        } else {
+            r->prev->next = r->next;
+            r->next->prev = r->prev;
+        }
     }
 }
